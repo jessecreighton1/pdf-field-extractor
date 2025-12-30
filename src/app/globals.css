@@ -1,26 +1,73 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Heidi Primary Colors */
+  --heidi-sunlight: #FBF582;
+  --heidi-bark: #28030F;
+  --heidi-sand: #F6ECE4;
+
+  /* Heidi Secondary Colors */
+  --heidi-forest: #194B22;
+  --heidi-sky: #B9CFFF;
+
+  /* Heidi UI States */
+  --heidi-success: #32A246;
+  --heidi-progress: #E76D18;
+  --heidi-failure: #D32539;
+
+  /* Semantic mappings */
+  --background: var(--heidi-sand);
+  --foreground: var(--heidi-bark);
+  --surface: #FFFFFF;
+  --surface-hover: #F8F4F0;
+  --muted: #9A9590;
 }
 
 @theme inline {
+  /* Primary Brand Colors */
+  --color-sunlight: var(--heidi-sunlight);
+  --color-bark: var(--heidi-bark);
+  --color-sand: var(--heidi-sand);
+
+  /* Secondary Colors */
+  --color-forest: var(--heidi-forest);
+  --color-sky: var(--heidi-sky);
+
+  /* UI States */
+  --color-success: var(--heidi-success);
+  --color-progress: var(--heidi-progress);
+  --color-failure: var(--heidi-failure);
+
+  /* Semantic Colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-muted: var(--muted);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Exposure', 'EB Garamond', Georgia, serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+/* Heidi brand utility classes */
+.bg-primary {
+  background-color: var(--heidi-bark);
+  color: var(--heidi-sunlight);
+}
+
+.bg-secondary {
+  background-color: var(--heidi-sand);
+  color: var(--heidi-bark);
+}
+
+.bg-accent {
+  background-color: var(--heidi-sunlight);
+  color: var(--heidi-bark);
 }
