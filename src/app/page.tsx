@@ -16,7 +16,7 @@ import {
 const PdfViewer = dynamic(() => import('@/components/PdfViewer').then(mod => ({ default: mod.PdfViewer })), {
   ssr: false,
   loading: () => (
-    <div className="h-full flex items-center justify-center bg-sand/50">
+    <div className="h-full flex items-center justify-center bg-background-tertiary">
       <LoadingSpinner size="lg" aria-label="Loading PDF viewer" />
     </div>
   ),
@@ -26,12 +26,12 @@ export default function Home() {
   const { pdfUrl, isLoading, loadingMessage, error, fields, reset } = useDocumentStore();
 
   return (
-    <div className="h-screen flex flex-col bg-sand">
+    <div className="h-screen flex flex-col bg-background-tertiary">
       {/* Header */}
-      <header className="bg-surface border-b border-bark/10 px-6 py-4 flex items-center justify-between">
+      <header className="bg-background-secondary border-b border-border-default px-6 py-4 flex items-center justify-between">
         <div>
-          <TypographyH3 className="text-bark">PDF Field Extractor</TypographyH3>
-          <TypographyP2 className="text-bark/60">
+          <TypographyH3>PDF Field Extractor</TypographyH3>
+          <TypographyP2>
             Extract and edit form fields from PDFs
           </TypographyP2>
         </div>
@@ -53,7 +53,7 @@ export default function Home() {
 
               {isLoading && (
                 <div className="mt-6 text-center">
-                  <div className="inline-flex items-center gap-3 px-5 py-3 bg-sunlight/30 text-bark rounded-full">
+                  <div className="inline-flex items-center gap-3 px-5 py-3 bg-background-secondary text-text-primary rounded-full border border-border-default">
                     <LoadingSpinner size="sm" aria-label="Processing document" />
                     <TypographyP2>{loadingMessage || 'Processing...'}</TypographyP2>
                   </div>
@@ -61,8 +61,8 @@ export default function Home() {
               )}
 
               {error && (
-                <div className="mt-6 p-4 bg-failure/10 border border-failure/30 rounded-lg text-failure text-center">
-                  <TypographyP2>{error}</TypographyP2>
+                <div className="mt-6 p-4 bg-validation-destructive/10 border border-validation-destructive/30 rounded-lg text-center">
+                  <TypographyP2 className="text-validation-destructive">{error}</TypographyP2>
                 </div>
               )}
             </div>
@@ -71,12 +71,12 @@ export default function Home() {
           // Editor Screen
           <div className="h-full flex">
             {/* PDF Viewer */}
-            <div className="flex-1 min-w-0 bg-sand/50">
+            <div className="flex-1 min-w-0 bg-background-tertiary">
               {isLoading ? (
                 <div className="h-full flex items-center justify-center">
                   <div className="text-center">
                     <LoadingSpinner size="lg" className="mx-auto mb-4" aria-label="Analyzing document" />
-                    <TypographyP2 className="text-bark/60">Analyzing document...</TypographyP2>
+                    <TypographyP2>Analyzing document...</TypographyP2>
                   </div>
                 </div>
               ) : (
@@ -92,12 +92,12 @@ export default function Home() {
 
       {/* Status Bar */}
       {pdfUrl && !isLoading && (
-        <footer className="bg-surface border-t border-bark/10 px-4 py-2 flex items-center justify-between">
-          <TypographyCaption className="text-bark/60">
+        <footer className="bg-background-secondary border-t border-border-default px-4 py-2 flex items-center justify-between">
+          <TypographyCaption>
             {fields.length} field{fields.length !== 1 ? 's' : ''} detected
           </TypographyCaption>
           {fields.filter(f => f.confidence < 70).length > 0 && (
-            <TypographyCaption className="text-progress">
+            <TypographyCaption className="text-validation-warning">
               {fields.filter(f => f.confidence < 70).length} low confidence
             </TypographyCaption>
           )}

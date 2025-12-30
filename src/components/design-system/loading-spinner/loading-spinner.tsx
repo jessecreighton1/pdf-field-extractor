@@ -4,7 +4,7 @@ import type { LoadingSpinnerProps, LoadingSpinnerSize } from './loading-spinner.
 
 const sizeClasses: Record<LoadingSpinnerSize, string> = {
   sm: 'h-5 w-5 border-2',
-  md: 'h-8 w-8 border-3',
+  md: 'h-8 w-8 border-[3px]',
   lg: 'h-12 w-12 border-4',
 };
 
@@ -16,7 +16,7 @@ const LoadingSpinner = React.forwardRef<HTMLDivElement, LoadingSpinnerProps>(
         role="status"
         aria-label={ariaLabel}
         className={cn(
-          'animate-spin rounded-full border-bark border-t-transparent',
+          'animate-spin rounded-full border-border-selected border-t-transparent',
           sizeClasses[size],
           className
         )}

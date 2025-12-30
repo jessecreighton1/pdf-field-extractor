@@ -93,7 +93,7 @@ export function PdfViewer() {
   return (
     <div className="flex flex-col h-full">
       {/* Controls */}
-      <div className="flex items-center justify-between p-2 bg-sand border-b border-bark/10">
+      <div className="flex items-center justify-between p-2 bg-background-tertiary border-b border-border-default">
         <div className="flex items-center gap-2">
           <button
             onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
@@ -101,14 +101,14 @@ export function PdfViewer() {
             aria-label="Previous page"
             className={cn(
               "px-3 py-1 rounded-md text-sm font-medium transition-colors",
-              "bg-surface border border-bark/20 text-bark",
-              "hover:bg-sunlight/30 hover:border-bark/30",
+              "bg-background-secondary border border-border-default text-text-primary",
+              "hover:bg-background-secondary-hover hover:border-border-selected",
               "disabled:opacity-50 disabled:cursor-not-allowed"
             )}
           >
             ←
           </button>
-          <TypographyCaption className="text-bark/70">
+          <TypographyCaption className="text-text-secondary">
             Page {currentPage} of {totalPages}
           </TypographyCaption>
           <button
@@ -117,8 +117,8 @@ export function PdfViewer() {
             aria-label="Next page"
             className={cn(
               "px-3 py-1 rounded-md text-sm font-medium transition-colors",
-              "bg-surface border border-bark/20 text-bark",
-              "hover:bg-sunlight/30 hover:border-bark/30",
+              "bg-background-secondary border border-border-default text-text-primary",
+              "hover:bg-background-secondary-hover hover:border-border-selected",
               "disabled:opacity-50 disabled:cursor-not-allowed"
             )}
           >
@@ -132,13 +132,13 @@ export function PdfViewer() {
             aria-label="Zoom out"
             className={cn(
               "px-3 py-1 rounded-md text-sm font-medium transition-colors",
-              "bg-surface border border-bark/20 text-bark",
-              "hover:bg-sunlight/30 hover:border-bark/30"
+              "bg-background-secondary border border-border-default text-text-primary",
+              "hover:bg-background-secondary-hover hover:border-border-selected"
             )}
           >
             -
           </button>
-          <TypographyCaption className="w-16 text-center text-bark/70">
+          <TypographyCaption className="w-16 text-center text-text-secondary">
             {Math.round(scale * 100)}%
           </TypographyCaption>
           <button
@@ -146,8 +146,8 @@ export function PdfViewer() {
             aria-label="Zoom in"
             className={cn(
               "px-3 py-1 rounded-md text-sm font-medium transition-colors",
-              "bg-surface border border-bark/20 text-bark",
-              "hover:bg-sunlight/30 hover:border-bark/30"
+              "bg-background-secondary border border-border-default text-text-primary",
+              "hover:bg-background-secondary-hover hover:border-border-selected"
             )}
           >
             +
@@ -156,7 +156,7 @@ export function PdfViewer() {
       </div>
 
       {/* PDF Container */}
-      <div className="flex-1 overflow-auto bg-bark/5 p-4">
+      <div className="flex-1 overflow-auto bg-background-tertiary p-4">
         <div className="flex justify-center">
           <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
             <div
@@ -169,7 +169,7 @@ export function PdfViewer() {
                 file={pdfUrl}
                 onLoadSuccess={onDocumentLoadSuccess}
                 loading={
-                  <div className="flex items-center justify-center w-[612px] h-[792px] bg-surface">
+                  <div className="flex items-center justify-center w-[612px] h-[792px] bg-background-secondary">
                     <LoadingSpinner size="lg" aria-label="Loading PDF" />
                   </div>
                 }
@@ -197,8 +197,8 @@ export function PdfViewer() {
       </div>
 
       {/* Tip */}
-      <div className="p-2 bg-sand border-t border-bark/10 text-center">
-        <TypographyCaption className="text-bark/50">
+      <div className="p-2 bg-background-tertiary border-t border-border-default text-center">
+        <TypographyCaption className="text-text-tertiary">
           Double-click to add a field • Drag fields to reposition • Click a field to select
         </TypographyCaption>
       </div>

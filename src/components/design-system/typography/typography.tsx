@@ -9,7 +9,7 @@ const TypographyH1 = React.forwardRef<HTMLHeadingElement, HeadingProps>(
       ref={ref}
       data-testid={testId}
       className={cn(
-        'text-4xl font-bold tracking-tight text-bark',
+        'text-4xl font-medium tracking-tight text-text-primary',
         'lg:text-5xl',
         className
       )}
@@ -25,7 +25,7 @@ const TypographyH2 = React.forwardRef<HTMLHeadingElement, HeadingProps>(
       ref={ref}
       data-testid={testId}
       className={cn(
-        'text-3xl font-semibold tracking-tight text-bark',
+        'text-3xl font-medium tracking-tight text-text-primary',
         'lg:text-4xl',
         className
       )}
@@ -41,7 +41,7 @@ const TypographyH3 = React.forwardRef<HTMLHeadingElement, HeadingProps>(
       ref={ref}
       data-testid={testId}
       className={cn(
-        'text-2xl font-semibold tracking-tight text-bark',
+        'text-2xl font-medium tracking-tight text-text-primary',
         className
       )}
       {...props}
@@ -56,7 +56,7 @@ const TypographyH4 = React.forwardRef<HTMLHeadingElement, HeadingProps>(
       ref={ref}
       data-testid={testId}
       className={cn(
-        'text-xl font-semibold tracking-tight text-bark',
+        'text-xl font-medium tracking-tight text-text-primary',
         className
       )}
       {...props}
@@ -71,7 +71,7 @@ const TypographyH5 = React.forwardRef<HTMLHeadingElement, HeadingProps>(
       ref={ref}
       data-testid={testId}
       className={cn(
-        'text-lg font-semibold text-bark',
+        'text-lg font-medium text-text-primary',
         className
       )}
       {...props}
@@ -86,7 +86,7 @@ const TypographyP = React.forwardRef<HTMLParagraphElement, ParagraphProps>(
     <p
       ref={ref}
       data-testid={testId}
-      className={cn('text-base text-bark leading-relaxed', className)}
+      className={cn('text-sm font-normal leading-normal tracking-normal text-text-primary', className)}
       {...props}
     />
   )
@@ -98,7 +98,7 @@ const TypographyPBold = React.forwardRef<HTMLParagraphElement, ParagraphProps>(
     <p
       ref={ref}
       data-testid={testId}
-      className={cn('text-base font-medium text-bark leading-relaxed', className)}
+      className={cn('text-sm font-medium leading-normal tracking-normal text-text-primary', className)}
       {...props}
     />
   )
@@ -110,7 +110,7 @@ const TypographyP2 = React.forwardRef<HTMLParagraphElement, ParagraphProps>(
     <p
       ref={ref}
       data-testid={testId}
-      className={cn('text-sm text-bark/80 leading-relaxed', className)}
+      className={cn('text-xs font-normal leading-snug tracking-normal text-text-secondary', className)}
       {...props}
     />
   )
@@ -122,7 +122,7 @@ const TypographyCaption = React.forwardRef<HTMLParagraphElement, ParagraphProps>
     <p
       ref={ref}
       data-testid={testId}
-      className={cn('text-xs text-bark/70', className)}
+      className={cn('text-xs font-normal leading-snug tracking-normal text-text-tertiary', className)}
       {...props}
     />
   )
@@ -134,7 +134,7 @@ const TypographyMuted = React.forwardRef<HTMLParagraphElement, ParagraphProps>(
     <p
       ref={ref}
       data-testid={testId}
-      className={cn('text-sm text-muted', className)}
+      className={cn('text-xs font-normal leading-snug tracking-normal text-text-disabled', className)}
       {...props}
     />
   )

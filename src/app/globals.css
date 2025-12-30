@@ -1,49 +1,124 @@
 @import "tailwindcss";
 
 :root {
-  /* Heidi Primary Colors */
+  /* Heidi Core Brand Colors */
   --heidi-sunlight: #FBF582;
   --heidi-bark: #28030F;
   --heidi-sand: #F6ECE4;
-
-  /* Heidi Secondary Colors */
   --heidi-forest: #194B22;
   --heidi-sky: #B9CFFF;
 
-  /* Heidi UI States */
+  /* Validation Colors */
   --heidi-success: #32A246;
-  --heidi-progress: #E76D18;
-  --heidi-failure: #D32539;
+  --heidi-warning: #E76D18;
+  --heidi-destructive: #D32539;
 
-  /* Semantic mappings */
-  --background: var(--heidi-sand);
-  --foreground: var(--heidi-bark);
-  --surface: #FFFFFF;
-  --surface-hover: #F8F4F0;
-  --muted: #9A9590;
+  /* Background Semantic Tokens */
+  --background-primary: var(--heidi-bark);
+  --background-primary-hover: #3D1520;
+  --background-primary-pressed: #1A0208;
+  --background-primary-disabled: #5C3640;
+
+  --background-secondary: #FFFFFF;
+  --background-secondary-hover: #FAF7F5;
+  --background-secondary-pressed: #F0EAE6;
+  --background-secondary-disabled: #F8F5F3;
+
+  --background-tertiary: var(--heidi-sand);
+  --background-tertiary-hover: #EDE2D8;
+  --background-tertiary-pressed: #E4D6CA;
+
+  /* Text Semantic Tokens */
+  --text-primary: var(--heidi-bark);
+  --text-primary-invert: #FFFFFF;
+  --text-secondary: #5C4A4F;
+  --text-tertiary: #8B7D82;
+  --text-disabled: #B8AEB2;
+  --text-active: var(--heidi-forest);
+
+  /* Border Semantic Tokens */
+  --border-default: #D9CFC9;
+  --border-selected: var(--heidi-bark);
+  --border-pressed: #1A0208;
+  --border-disabled: #E8E0DC;
+
+  /* Ring/Focus Tokens */
+  --ring-selected: var(--heidi-sky);
+  --outline-focus: var(--heidi-sky);
+  --ring-offset-surface: #FFFFFF;
+
+  /* Validation Semantic Tokens */
+  --validation-success: var(--heidi-success);
+  --validation-success-hover: #2A8A3B;
+  --validation-success-pressed: #227A31;
+  --validation-success-disabled: #A3D4AD;
+
+  --validation-warning: var(--heidi-warning);
+
+  --validation-destructive: var(--heidi-destructive);
+  --validation-destructive-disabled: #EDA3AB;
+
+  /* Surface (backwards compat) */
+  --surface: var(--background-secondary);
 }
 
 @theme inline {
-  /* Primary Brand Colors */
+  /* Core Brand Colors */
   --color-sunlight: var(--heidi-sunlight);
   --color-bark: var(--heidi-bark);
   --color-sand: var(--heidi-sand);
-
-  /* Secondary Colors */
   --color-forest: var(--heidi-forest);
   --color-sky: var(--heidi-sky);
 
-  /* UI States */
-  --color-success: var(--heidi-success);
-  --color-progress: var(--heidi-progress);
-  --color-failure: var(--heidi-failure);
+  /* Background System */
+  --color-background-primary: var(--background-primary);
+  --color-background-primary-hover: var(--background-primary-hover);
+  --color-background-primary-pressed: var(--background-primary-pressed);
+  --color-background-primary-disabled: var(--background-primary-disabled);
 
-  /* Semantic Colors */
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-surface: var(--surface);
-  --color-surface-hover: var(--surface-hover);
-  --color-muted: var(--muted);
+  --color-background-secondary: var(--background-secondary);
+  --color-background-secondary-hover: var(--background-secondary-hover);
+  --color-background-secondary-pressed: var(--background-secondary-pressed);
+  --color-background-secondary-disabled: var(--background-secondary-disabled);
+
+  --color-background-tertiary: var(--background-tertiary);
+  --color-background-tertiary-hover: var(--background-tertiary-hover);
+  --color-background-tertiary-pressed: var(--background-tertiary-pressed);
+
+  /* Text System */
+  --color-text-primary: var(--text-primary);
+  --color-text-primary-invert: var(--text-primary-invert);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-text-disabled: var(--text-disabled);
+  --color-text-active: var(--text-active);
+
+  /* Border System */
+  --color-border-default: var(--border-default);
+  --color-border-selected: var(--border-selected);
+  --color-border-pressed: var(--border-pressed);
+  --color-border-disabled: var(--border-disabled);
+
+  /* Ring/Focus System */
+  --color-ring-selected: var(--ring-selected);
+  --color-outline-focus: var(--outline-focus);
+  --color-ring-offset-surface: var(--ring-offset-surface);
+
+  /* Validation System */
+  --color-validation-success: var(--validation-success);
+  --color-validation-success-hover: var(--validation-success-hover);
+  --color-validation-success-pressed: var(--validation-success-pressed);
+  --color-validation-success-disabled: var(--validation-success-disabled);
+  --color-validation-warning: var(--validation-warning);
+  --color-validation-destructive: var(--validation-destructive);
+  --color-validation-destructive-disabled: var(--validation-destructive-disabled);
+
+  /* Legacy/Backwards Compat */
+  --color-surface: var(--background-secondary);
+  --color-surface-hover: var(--background-secondary-hover);
+  --color-success: var(--validation-success);
+  --color-progress: var(--validation-warning);
+  --color-failure: var(--validation-destructive);
 
   /* Typography */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -51,23 +126,12 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--background-tertiary);
+  color: var(--text-primary);
   font-family: var(--font-sans);
 }
 
-/* Heidi brand utility classes */
-.bg-primary {
-  background-color: var(--heidi-bark);
-  color: var(--heidi-sunlight);
-}
-
-.bg-secondary {
-  background-color: var(--heidi-sand);
-  color: var(--heidi-bark);
-}
-
-.bg-accent {
-  background-color: var(--heidi-sunlight);
-  color: var(--heidi-bark);
+/* Focus ring utility matching Heidi patterns */
+.focus-ring {
+  @apply outline-hidden outline-1 outline-offset-1 focus:outline-outline-focus;
 }

@@ -95,11 +95,11 @@ export function UploadZone() {
   return (
     <Card
       className={cn(
-        'border-2 border-dashed transition-all duration-200 cursor-pointer',
+        'border-2 border-dashed transition-all duration-300 cursor-pointer',
         'p-12 text-center',
         isDragging
-          ? 'border-bark bg-sunlight/20'
-          : 'border-bark/30 hover:border-bark hover:bg-sunlight/10'
+          ? 'border-border-selected bg-background-tertiary-hover'
+          : 'border-border-default hover:border-border-selected hover:bg-background-tertiary-hover'
       )}
     >
       <div
@@ -119,13 +119,13 @@ export function UploadZone() {
           <div className="flex flex-col items-center gap-4">
             {/* Document Icon */}
             <div className={cn(
-              'w-16 h-16 rounded-full flex items-center justify-center transition-colors',
-              isDragging ? 'bg-sunlight' : 'bg-bark/10'
+              'w-16 h-16 rounded-full flex items-center justify-center transition-colors duration-300',
+              isDragging ? 'bg-background-primary' : 'bg-background-tertiary'
             )}>
               <svg
                 className={cn(
-                  'w-8 h-8 transition-colors',
-                  isDragging ? 'text-bark' : 'text-bark/60'
+                  'w-8 h-8 transition-colors duration-300',
+                  isDragging ? 'text-text-primary-invert' : 'text-text-secondary'
                 )}
                 fill="none"
                 stroke="currentColor"
@@ -145,7 +145,7 @@ export function UploadZone() {
               <TypographyP className="font-medium">
                 {isDragging ? 'Drop your PDF here' : 'Drop a PDF here or click to upload'}
               </TypographyP>
-              <TypographyP2 className="mt-2 text-bark/60">
+              <TypographyP2 className="mt-2">
                 PDF files up to 5MB
               </TypographyP2>
             </div>

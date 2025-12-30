@@ -10,13 +10,13 @@ interface FieldOverlayProps {
   scale: number;
 }
 
-// Heidi design system field colors
+// Heidi design system field colors - using semantic tokens
 const fieldColors: Record<string, { bg: string; border: string; text: string }> = {
-  text: { bg: 'bg-sky/20', border: 'border-sky', text: 'text-sky' },
-  checkbox: { bg: 'bg-success/20', border: 'border-success', text: 'text-success' },
-  signature: { bg: 'bg-bark/10', border: 'border-bark/60', text: 'text-bark' },
-  date: { bg: 'bg-sunlight/40', border: 'border-sunlight', text: 'text-bark' },
-  dropdown: { bg: 'bg-progress/20', border: 'border-progress', text: 'text-progress' },
+  text: { bg: 'bg-blue-100', border: 'border-blue-500', text: 'text-blue-600' },
+  checkbox: { bg: 'bg-validation-success/20', border: 'border-validation-success', text: 'text-validation-success' },
+  signature: { bg: 'bg-background-tertiary', border: 'border-border-selected', text: 'text-text-primary' },
+  date: { bg: 'bg-amber-100', border: 'border-amber-400', text: 'text-text-primary' },
+  dropdown: { bg: 'bg-validation-warning/20', border: 'border-validation-warning', text: 'text-validation-warning' },
 };
 
 const fieldIcons: Record<string, string> = {
@@ -62,7 +62,7 @@ export function FieldOverlay({ field, scale }: FieldOverlayProps) {
         colors.bg, colors.border,
         "border-2 rounded cursor-pointer transition-all duration-150",
         "flex items-center justify-center overflow-hidden",
-        isSelected ? "ring-2 ring-offset-1 ring-bark shadow-lg" : "hover:shadow-md",
+        isSelected ? "ring-2 ring-offset-1 ring-border-selected shadow-lg" : "hover:shadow-md",
         isDragging && "shadow-xl"
       )}
       {...listeners}
@@ -76,7 +76,7 @@ export function FieldOverlay({ field, scale }: FieldOverlayProps) {
       {/* Confidence indicator for low confidence fields */}
       {field.confidence < 70 && (
         <div
-          className="absolute -top-1 -right-1 w-3 h-3 bg-progress rounded-full"
+          className="absolute -top-1 -right-1 w-3 h-3 bg-validation-warning rounded-full"
           title={`Confidence: ${Math.round(field.confidence)}%`}
         />
       )}

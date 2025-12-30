@@ -13,9 +13,8 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
       ref={ref}
       data-testid={testId}
       className={cn(
-        'bg-surface rounded-2xl p-6',
-        'shadow-sm shadow-bark/5',
-        'border border-bark/5',
+        'bg-background-secondary rounded-lg p-6',
+        'border border-border-default',
         className
       )}
       {...props}

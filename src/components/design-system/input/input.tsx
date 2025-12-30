@@ -9,12 +9,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       type={type}
       data-testid={testId}
       className={cn(
-        'flex h-10 w-full rounded-lg px-3 py-2',
-        'bg-surface border border-bark/20',
-        'text-bark text-sm',
-        'placeholder:text-bark/40',
-        'focus:outline-none focus:ring-2 focus:ring-bark focus:ring-offset-1',
-        'disabled:cursor-not-allowed disabled:opacity-50',
+        'flex h-8 w-full rounded-md px-2.5 py-[9px]',
+        'bg-background-secondary border border-border-default',
+        'text-text-primary text-sm font-normal tracking-normal',
+        'placeholder:text-text-tertiary',
+        'outline-hidden -outline-offset-1',
+        'focus:outline-1 focus:outline-outline-focus focus:border-border-selected',
+        'hover:bg-background-secondary-hover',
+        'disabled:cursor-not-allowed disabled:bg-background-secondary-disabled disabled:text-text-disabled',
         'transition-all duration-200',
         className
       )}
@@ -30,8 +32,8 @@ const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
       ref={ref}
       data-testid={testId}
       className={cn(
-        'text-sm font-medium text-bark',
-        'peer-disabled:cursor-not-allowed peer-disabled:opacity-70',
+        'text-xs font-medium leading-snug tracking-normal text-text-primary',
+        'peer-disabled:cursor-not-allowed peer-disabled:text-text-disabled',
         className
       )}
       {...props}
@@ -46,11 +48,13 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
       ref={ref}
       data-testid={testId}
       className={cn(
-        'flex h-10 w-full rounded-lg px-3 py-2',
-        'bg-surface border border-bark/20',
-        'text-bark text-sm',
-        'focus:outline-none focus:ring-2 focus:ring-bark focus:ring-offset-1',
-        'disabled:cursor-not-allowed disabled:opacity-50',
+        'flex h-8 w-full rounded-md px-2.5 py-[9px]',
+        'bg-background-secondary border border-border-default',
+        'text-text-primary text-sm font-normal tracking-normal',
+        'outline-hidden -outline-offset-1',
+        'focus:outline-1 focus:outline-outline-focus focus:border-border-selected',
+        'hover:bg-background-secondary-hover',
+        'disabled:cursor-not-allowed disabled:bg-background-secondary-disabled disabled:text-text-disabled',
         'transition-all duration-200',
         'appearance-none cursor-pointer',
         className

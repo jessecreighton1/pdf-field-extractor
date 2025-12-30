@@ -86,12 +86,12 @@ export function FieldSidebar() {
   };
 
   return (
-    <div className="w-80 bg-surface border-l border-bark/10 flex flex-col h-full">
+    <div className="w-80 bg-background-secondary border-l border-border-default flex flex-col h-full">
       {/* Header */}
-      <div className="p-4 border-b border-bark/10 bg-sand/50">
+      <div className="p-4 border-b border-border-default bg-background-tertiary">
         <div className="flex items-center justify-between">
           <TypographyH4>Fields</TypographyH4>
-          <TypographyCaption className="text-bark/60">
+          <TypographyCaption className="text-text-tertiary">
             {currentPageFields.length} on this page
           </TypographyCaption>
         </div>
@@ -99,12 +99,12 @@ export function FieldSidebar() {
 
       {/* Field Editor (when selected) */}
       {selectedField && (
-        <div className="p-4 border-b border-bark/10 bg-sunlight/20">
+        <div className="p-4 border-b border-border-default bg-background-tertiary-hover">
           <div className="flex items-center justify-between mb-4">
             <TypographyP className="font-medium">Edit Field</TypographyP>
             <button
               onClick={() => selectField(null)}
-              className="text-bark/40 hover:text-bark transition-colors"
+              className="text-text-disabled hover:text-text-primary transition-colors"
             >
               ✕
             </button>
@@ -160,12 +160,12 @@ export function FieldSidebar() {
 
             {/* Confidence & Delete */}
             <div className="flex items-center justify-between pt-2">
-              <TypographyCaption className="text-bark/60">
+              <TypographyCaption className="text-text-tertiary">
                 Confidence: {Math.round(selectedField.confidence)}%
               </TypographyCaption>
               <button
                 onClick={() => deleteField(selectedField.id)}
-                className="text-xs text-failure hover:text-failure/80 transition-colors"
+                className="text-xs text-validation-destructive hover:text-validation-destructive/80 transition-colors"
               >
                 Delete
               </button>
@@ -178,15 +178,15 @@ export function FieldSidebar() {
       <div className="flex-1 overflow-auto">
         {currentPageFields.length === 0 ? (
           <div className="p-6 text-center">
-            <TypographyP2 className="text-bark/60">
+            <TypographyP2 className="text-text-tertiary">
               No fields detected on this page.
             </TypographyP2>
-            <TypographyCaption className="mt-1 text-bark/40">
+            <TypographyCaption className="mt-1 text-text-disabled">
               Double-click on the PDF to add fields manually.
             </TypographyCaption>
           </div>
         ) : (
-          <ul className="divide-y divide-bark/10">
+          <ul className="divide-y divide-border-default">
             {currentPageFields.map((field) => (
               <FieldListItem
                 key={field.id}
@@ -200,7 +200,7 @@ export function FieldSidebar() {
       </div>
 
       {/* Export Buttons */}
-      <div className="p-4 border-t border-bark/10 bg-sand/50 space-y-2">
+      <div className="p-4 border-t border-border-default bg-background-tertiary space-y-2">
         <Button
           onClick={handleExportFillablePdf}
           disabled={fields.length === 0 || !pdfFile || isExporting}
@@ -244,14 +244,14 @@ function FieldListItem({ field, isSelected, onClick }: FieldListItemProps) {
       className={cn(
         'p-3 cursor-pointer transition-all duration-200',
         isSelected
-          ? 'bg-sunlight/30'
-          : 'hover:bg-sand'
+          ? 'bg-background-tertiary-hover'
+          : 'hover:bg-background-tertiary'
       )}
     >
       <div className="flex items-start gap-3">
         <span className={cn(
           'text-lg w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0',
-          isSelected ? 'bg-sunlight' : 'bg-bark/10'
+          isSelected ? 'bg-background-primary text-text-primary-invert' : 'bg-background-tertiary'
         )}>
           {typeConfig.icon}
         </span>
@@ -259,7 +259,7 @@ function FieldListItem({ field, isSelected, onClick }: FieldListItemProps) {
           <TypographyP2 className="font-medium truncate">
             {field.label}
           </TypographyP2>
-          <TypographyCaption className="text-bark/60 truncate">
+          <TypographyCaption className="text-text-tertiary truncate">
             {field.type === 'checkbox'
               ? field.value === 'checked' ? '✓ Checked' : '○ Unchecked'
               : field.value || '(empty)'}
@@ -267,7 +267,7 @@ function FieldListItem({ field, isSelected, onClick }: FieldListItemProps) {
         </div>
         {field.confidence < 70 && (
           <span
-            className="w-2 h-2 bg-progress rounded-full flex-shrink-0 mt-2"
+            className="w-2 h-2 bg-validation-warning rounded-full flex-shrink-0 mt-2"
             title={`Low confidence: ${Math.round(field.confidence)}%`}
           />
         )}
